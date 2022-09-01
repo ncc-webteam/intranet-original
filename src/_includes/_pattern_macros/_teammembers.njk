@@ -1,0 +1,19 @@
+{% macro teamMemberitems(imgURL, memberName, memberPosition ) %}
+<div class="col-md-6">
+  <div class="person-card card flex-row"> 
+    <div class="feat-img col-md-4">
+      <img src="{{ imgURL }}" alt="{{ memberName }} picture" />
+      
+    </div>
+    <div class="member-info col-md-8">
+    <h4>
+      {{ memberName }}
+  </h4>
+    <div class="meta-info">
+      <span class="smallDetail">{{ memberPosition }}</span>
+     </div>
+      
+    </div>
+  </div>
+</div>
+{% endmacro %}

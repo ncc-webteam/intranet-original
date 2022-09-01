@@ -1,0 +1,26 @@
+.poster-card {
+  
+  position: relative;
+  
+  
+  .card-info {color: #fff; position: relative; z-index: 2;
+    background: rgba(0,0,0,0.75);padding: 20px; 
+  
+    h1,h2,h3,h4,h5,h6 {color: #fff;}
+    
+    .button {width: 100%; text-align: center;}
+   
+  }
+  
+   /* &:before {
+      content: "";
+      //background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 3%, black 100%);
+     // opacity: 1.0;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0px;
+      bottom: 0px;
+  }*/
+
+}

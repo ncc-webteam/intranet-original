@@ -1,0 +1,88 @@
+{% macro navcards(colclass, title, titlelink, navsummary, link1title, link1link, link2title, link2link, link3title, link3link) %}
+
+<div class="{{ colclass }}">
+  <div class="signpost-card">
+    
+    <h2 class="h4">
+      <a class="titlelink" href="{{ titlelink }}">
+      {{ title }}
+      </a>
+    </h2>
+     
+     
+    {% if navsummary|length %}
+     <p>{{ navsummary }}</p>
+     {% else %}
+    
+    <p>Includes <a href="{{ link1link }}">{{ link1title }}</a>{% if link3title|length %}, <a href="{{ link2link }}">{{ link2title }}</a> and <a href="{{ link3link }}">{{ link3title }}</a>
+      {% else %}
+      and <a href="{{ link2link }}">{{ link2title }}</a>
+      {% endif %}  
+    
+    </p>
+    {% endif %} 
+      
+   
+  </div>
+</div>
+
+{% endmacro %}
+
+
+
+
+
+{#
+
+
+ {% set navcarditems = [
+        {
+            "navcard_colclass" : "col-md-6 col-lg-3",
+            "navcard_title" : "HR (Human Resources)",
+            "navcard_titlelink" : "/HumanResources/humanresources.html",
+            "navcard_navsummary" : "",
+            "navcard_link1title" : "Starters and leavers",
+            "navcard_link1link" : "#",
+            "navcard_link2title" : "Holiday guidance",
+            "navcard_link2link" : "#",
+            "navcard_link3title" : "Jobs",
+            "navcard_link3link" : "#"
+
+        },
+        {
+            "navcard_colclass" : "col-md-6 col-lg-3",
+            "navcard_title" : "Technology",
+            "navcard_titlelink" : "#",
+            "navcard_navsummary" : "",
+            "navcard_link1title" : "Service requests",
+            "navcard_link1link" : "#",
+            "navcard_link2title" : "Access requests",
+            "navcard_link2link" : "#",
+            "navcard_link3title" : "Asset management",
+            "navcard_link3link" : "#"
+
+        }
+      ]
+    %}
+           
+      {% for navcarditem in navcarditems %}
+
+      {{  
+        navcardLooper.navcards(
+            navcarditem.navcard_colclass,
+            navcarditem.navcard_title, 
+            navcarditem.navcard_titlelink,
+            navcarditem.navcard_navsummary,
+            navcarditem.navcard_link1title,
+            navcarditem.navcard_link1link,
+            navcarditem.navcard_link2title,
+            navcarditem.navcard_link2link,
+            navcarditem.navcard_link3title,
+            navcarditem.navcard_link3link
+            ) 
+      }}
+
+      {% endfor %} 
+
+
+#}

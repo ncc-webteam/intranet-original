@@ -1,0 +1,15 @@
+.people-list {list-style: none;}
+.person-card { display: flex;
+  background: #fff; 
+  //@include border-shadow;
+  margin-bottom: 10px;
+  
+  .feat-img {width: 60px; min-height: 60px; height: auto; }
+  .member-info {     flex-shrink: 60;
+    h4 {margin: 0;}
+    padding: 10px 15px; font-size: 14px;
+  display: flex; flex-wrap: wrap; flex-direction: column; justify-content: center;
+  }
+  .smallDetail {line-height: 150%;}
+  
+}

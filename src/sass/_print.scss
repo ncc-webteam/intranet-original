@@ -1,0 +1,5 @@
+@media print {
+  aside.col-md-3, #main-content {    width: 100%;
+    max-width: 100%;
+    flex: auto; margin-bottom: 10px;}
+}

@@ -1,0 +1,82 @@
+$primary-color: #00823b;
+$secondary-color: #767676;
+$accyellow: #ffbf47;
+
+
+.btn {margin-bottom: 5px;
+  &:focus {
+    box-shadow: 0px 0px 0px #000 !important; 
+    outline: 2px solid $accyellow !important; 
+    border-color: $accyellow !important;
+    border-radius: 0;
+  }
+}
+
+.btn-primary {background: $primary-color;
+  border: 2px solid $primary-color;
+  &:hover {background: darken($primary-color, 10%);
+  border: 2px solid $primary-color;
+  }
+  &:focus {box-shadow: 0px 0px 0px #000; outline: 2px solid $accyellow; border-color: $accyellow;}
+}
+
+
+.btn-secondary { padding: 2px 12px; background: $secondary-color; color: #fff;
+  border: 2px solid $secondary-color;
+  &:hover {border-bottom: 2px solid $secondary-color;}
+  &:focus {border: 2px solid $accyellow;}
+}
+
+.btn-tertiary {
+  color: $teal; border: 0px;
+  &:hover {
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+    border: 0px;
+    &:focus {border-bottom: 0px !important;}
+  }
+  
+}
+
+a.btn-tertiary {
+  &:focus {border-bottom: 0px !important;}
+}
+
+.btn-warning {background: #be4600; color: #fff;
+  &:hover {background: darken(#be4600, 10%); color: #fff;}
+}
+
+
+
+.btn-info {background: #4840E3; color: #fff; }
+.btn-danger {background: #b32017; color: #fff;
+  &:hover {background: darken(#b32017, 10%);}
+}
+
+
+
+
+.btn-outline-secondary {
+    background-color: transparent;
+    border: 2px solid;
+    border-color: #424242;
+    color: #424242;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 32px;
+    padding: 5px 12px;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  svg { fill: #424242; 
+  
+  display: inline-block;
+    margin-left: 6px;
+    margin-top: -6px;
+    vertical-align: middle;
+  }
+  &:hover {
+    svg { fill: #fff; }
+  }
+}

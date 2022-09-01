@@ -1,0 +1,37 @@
+
+
+
+
+.card {
+  @include ani;
+     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px !important;
+  border-radius: 12px;
+  margin-bottom: 10px;     padding: 20px; 
+  background: #fff;
+  height: 100%;
+    align-self: stretch;
+    justify-self: stretch;
+  
+  
+  p {font-size: 16px; color: $darkgrey;}
+  
+  .card-body {padding: 0;}
+  
+  .card-subtitle {font-size: 14px; }
+  
+  .in-service {font-weight: 600; color: $teal;}
+  .icon { max-width: 15%;}
+  
+  &:hover {box-shadow: rgba(0, 0, 0, 0.25) 0px 6px 12px !important;} 
+}
+.card-actions {margin-top: 1rem;}
+.meta-info {margin-top: auto;}
+
+
+
+.general-card {
+  padding: 0px;
+  
+  .card-body {padding: 20px;}
+  
+}

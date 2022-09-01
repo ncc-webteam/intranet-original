@@ -1,0 +1,28 @@
+
+{% macro listMakeritems(imgURL, listItem, listURL, itemDate, itemDept, readTime) %}
+  <li class="list-item list-group-item">
+    <!--<div class="feat-img">
+      <img src="{{ imgURL }}"/>
+    </div>-->
+    <div class="news-info">
+    <h3>
+      <a class="news-item-link" href="{{ listURL }}">
+      {{ listItem }}
+      </a>
+    </h3>
+    <div class="meta-info">
+      
+      {% if itemDate|length %}
+      <span class="smallDetail">{{ itemDate }} | {{ itemDept }}</span><br>
+      <!--<span class="smallDetail">{{ readTime }}</span>-->
+      {% else %}
+      
+      
+      {% endif %}
+      
+      
+     </div>
+      
+    </div>
+  </li>
+{% endmacro %}

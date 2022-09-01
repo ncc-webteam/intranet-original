@@ -1,0 +1,28 @@
+#filter-bar {border-bottom: 1px solid #ebebeb;} 
+
+form#search-filters {margin: 0;}
+
+
+.wrapper ul.pagination {list-style: none; padding-left: 0px;} 
+
+
+.wrapper ul.pagination a:hover {border-bottom: 0;}
+
+
+
+#search-news ul {padding-left: 0; 
+
+  li {width: 100%;}
+}
+
+
+.card.search-result {height: auto;}
+
+.card.search-result:hover h1 a{text-decoration: none;
+    border-bottom: 2px solid #4840E3;
+    cursor: pointer; color: #4840E3;}
+.card.search-result h1 a{
+  &:after{ content: ""; display: block; position: absolute; width: 100%; height: 100%; left: 0; top:0;}
+}
+
+.card.search-result .card-actions a{position: relative; z-index: 3;}

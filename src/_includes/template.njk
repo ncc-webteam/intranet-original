@@ -8,8 +8,10 @@
   <title>Document</title>
 </head>
 <body>
+  {% include "_components/_header.njk" %}
   <main>
     {% block main %}{% endblock %}
   </main>
+  {% include "_components/_footer.njk" %}
 </body>
 </html>

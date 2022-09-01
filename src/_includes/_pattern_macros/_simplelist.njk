@@ -1,0 +1,34 @@
+{% macro simplelistitems(subtoptitle, title, subtitle, Date, Dept, Link) %}
+  <li class="list-item list-group-item">
+    <div class="item-info">
+      
+    {% if subtoptitle|length %}  
+    <p class="h6 card-subtitle mb-1">{{ subtoptitle }}</p>
+    {% else %}{% endif %}  
+      
+    <h4>
+      <a class="titlelink" href="{{ Link }}">
+      {{ title }}
+      </a>
+    </h4>
+      
+    {% if subtitle|length %}  
+    <h5 class="h6 card-subtitle mb-2 text-muted">{{ subtitle }}</h5>
+    {% else %}{% endif %}
+      
+      {% if Date|length %}
+    <div class="meta-info">
+      <span class="smallDetail">
+        {% if Date|length %}
+        {{ Date }}
+        {% endif %}
+        {% if Dept|length %}
+        {{ Dept }}
+        {% endif %}
+      </span>
+     </div>
+      {% endif %}
+      
+    </div>
+  </li>
+{% endmacro %}

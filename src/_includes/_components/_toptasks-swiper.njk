@@ -1,0 +1,172 @@
+<div id="top-tasks-links" class="py-4">
+   
+    <div class="fulltainer d-flex justify-content-between flex-wrap">
+        
+        
+        <div id="toptasks" class="col-lg-12">
+          <div class="col-lg-12 mb-2 titlebar">
+          <h2 class="h4">Top tasks</h2>
+          <p class="text-muted">The most popular tasks recently</p>
+          
+        </div>
+          
+          <div id="popular-tasks">
+      <ul class="feed list-group-flush slick">
+          
+        
+        {% set simplelistitems = [
+        {
+            "li_subtoptitle" : "HR",
+            "li_title" : "Book some holiday leave",
+            "li_subtitle" : "",
+            "li_Date" : "",
+            "li_Dept" : "",
+            "li_Link" : "#"
+
+        },
+        {
+            "li_subtoptitle" : "Finance and budget",
+            "li_title" : "Look up payscales",
+            "li_subtitle" : "",
+            "li_Date" : "",
+            "li_Dept" : "",
+            "li_Link" : "/HumanResources/PayandReward/payscales.html"
+
+        }
+      ]
+    %}
+         
+      {% for simplelistitem in simplelistitems %}
+
+      {{ 
+        simplelistLooper.simplelistitems(
+            simplelistitem.li_subtoptitle,
+            simplelistitem.li_title,
+            simplelistitem.li_subtitle,
+            simplelistitem.li_Date,
+            simplelistitem.li_Dept,
+            simplelistitem.li_Link
+            ) 
+      }}
+
+      {% endfor %}
+        
+        {% set simplelistitems = [
+        {
+            "li_subtoptitle" : "Technology",
+            "li_title" : "Service requests",
+            "li_subtitle" : "",
+            "li_Date" : "",
+            "li_Dept" : "",
+            "li_Link" : "#"
+
+        },
+        {
+            "li_subtoptitle" : "Comms and strategy",
+            "li_title" : "Communications toolkit",
+            "li_subtitle" : "",
+            "li_Date" : "",
+            "li_Dept" : "",
+            "li_Link" : "#"
+
+        }
+      ]
+    %}
+         
+      {% for simplelistitem in simplelistitems %}
+
+      {{ 
+        simplelistLooper.simplelistitems(
+            simplelistitem.li_subtoptitle,
+            simplelistitem.li_title,
+            simplelistitem.li_subtitle,
+            simplelistitem.li_Date,
+            simplelistitem.li_Dept,
+            simplelistitem.li_Link
+            ) 
+      }}
+
+      {% endfor %}
+        
+        {% set simplelistitems = [
+        {
+            "li_subtoptitle" : "Adult Social Services",
+            "li_title" : "Adult Care leaflets",
+            "li_subtitle" : "",
+            "li_Date" : "",
+            "li_Dept" : "",
+            "li_Link" : "#"
+
+        },
+        {
+            "li_subtoptitle" : "Adult Social Services",
+            "li_title" : "Procedures list",
+            "li_subtitle" : "",
+            "li_Date" : "",
+            "li_Dept" : "",
+            "li_Link" : "#"
+
+        }
+      ]
+    %}
+         
+      {% for simplelistitem in simplelistitems %}
+
+      {{ 
+        simplelistLooper.simplelistitems(
+            simplelistitem.li_subtoptitle,
+            simplelistitem.li_title,
+            simplelistitem.li_subtitle,
+            simplelistitem.li_Date,
+            simplelistitem.li_Dept,
+            simplelistitem.li_Link
+            ) 
+      }}
+
+      {% endfor %}
+        
+        {% set simplelistitems = [
+        {
+            "li_subtoptitle" : "Adult Social Services",
+            "li_title" : "Adult Care leaflets",
+            "li_subtitle" : "",
+            "li_Date" : "",
+            "li_Dept" : "",
+            "li_Link" : "#"
+
+        },
+        {
+            "li_subtoptitle" : "Adult Social Services",
+            "li_title" : "Procedures list",
+            "li_subtitle" : "",
+            "li_Date" : "",
+            "li_Dept" : "",
+            "li_Link" : "#"
+
+        }
+      ]
+    %}
+         
+      {% for simplelistitem in simplelistitems %}
+
+      {{ 
+        simplelistLooper.simplelistitems(
+            simplelistitem.li_subtoptitle,
+            simplelistitem.li_title,
+            simplelistitem.li_subtitle,
+            simplelistitem.li_Date,
+            simplelistitem.li_Dept,
+            simplelistitem.li_Link
+            ) 
+      }}
+
+      {% endfor %}
+        
+       </ul>
+          
+             
+          </div>
+        </div>
+        
+        </div>
+         </div>

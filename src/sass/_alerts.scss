@@ -1,0 +1,47 @@
+.alert {
+    border: 0;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  width: 100%;
+}
+
+.alert-danger {background: #b32017; color: #fff;
+
+  .alert-link {color: #fff;
+    &:hover {border-bottom: 2px solid #fff;}
+  }
+}
+
+.alert svg {margin-right: 10px;}
+
+.alert-snippet {
+  small, p {margin: 0; line-height: 120%;}
+  p {font-weight: 600; font-size: 16px;}
+  small {font-weight: 500; opacity: 0.75;}
+}
+
+
+
+.alert-secondary {background: $teal; color: #fff;
+
+  .alert-link {color: #fff;
+    &:hover {border-bottom: 2px solid #fff;}
+  }
+}
+
+
+
+.alert a {
+  display: block; width: 100%; color: #fff;
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &:hover, &:focus {border-bottom: 0;}
+}

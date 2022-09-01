@@ -1,0 +1,46 @@
+{% macro cards(colclass, image, subtoptitle, title, subtitle, Date, Dept, Link) %}
+
+<div class="{{ colclass }}">
+  <div class="card">
+    
+    {% if image|length %}
+    <div class="feat-img">
+      <img src="{{ imgURL }}"/>
+    </div> 
+    {% else %}{% endif %}
+    
+    <div class="item-info card-body">
+      
+    {% if subtoptitle|length %}  
+    <p class="h6 card-subtitle mb-2 text-muted">{{ subtoptitle }}</p>
+    {% else %}{% endif %}  
+      
+    <h4>
+      <a class="titlelink" href="{{ Link }}">
+      {{ title }}
+      </a>
+    </h4>
+      
+    {% if subtitle|length %}  
+    <h5 class="h6 card-subtitle mb-2 text-muted">{{ subtitle }}</h5>
+    {% else %}{% endif %}
+      
+    <div class="meta-info">
+      
+      <span class="smallDetail">
+        {% if Date|length %}
+        {{ Date }}
+        {% endif %}
+        {% if Dept|length %}
+        {{ Dept }}
+        {% endif %}
+      </span>
+     
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+{% endmacro %}

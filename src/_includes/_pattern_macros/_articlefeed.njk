@@ -1,0 +1,115 @@
+{% macro cards(colclass, featimg, title, titlelink, navsummary, date, tags, authorimg, authorname, authorpos ) %}
+
+<div class="{{ colclass }}">
+  <article class="news-card">
+    
+    {% if featimg|length %}
+    <div class="featimg" style="background: url('{{ featimg }}'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
+             
+      </div>
+    {% endif %}
+    
+    <div class="info info d-flex flex-wrap flex-row">
+    <h1 class="h4">
+      <a class="titlelink" href="{{ titlelink }}">
+      {{ title }}
+      </a>
+    </h1>
+     
+     
+    {% if navsummary|length %}
+     <p>{{ navsummary }}</p>
+     {% endif %}
+    
+    
+      {% if authorname|length %}
+     <div class="footer-meta d-flex">
+          <img src="{{ authorimg }}">
+          <div class="author">
+          <p class="name h6">{{ authorname }}</p>
+         <small class="text-muted">{{ authorpos }}</small>
+        </div>
+      </div> 
+      {% else %}
+      
+      <div class="meta-info">
+      <span class="smallDetail">{{ date }} | {{ tags }}</span><br>
+      </div>
+      {% endif %}
+      
+    </div>
+   
+  </article>
+</div>
+
+{% endmacro %}
+
+
+
+
+
+{#
+
+
+ {% set carditems = [
+        {
+            "card_colclass" : "col-md-6 col-lg-3",
+            "card_featimg" : "https://f793a340d0e7404587e0fbf6d5a318db.production.codepen.plumbing/img/laptop.png",
+            "card_title" : "Development plan time",
+            "card_titlelink" : "/HumanResources/humanresources.html",
+            "card_navsummary" : "It's the season for the Personal Development plans, to be completed by 30th June",
+            "date" : "Mar 16",
+            "tags" : "Human Resources"
+
+        },
+        {
+            "card_colclass" : "col-md-6 col-lg-3",
+            "card_featimg" : "https://f793a340d0e7404587e0fbf6d5a318db.production.codepen.plumbing/img/laptop.png",
+            "card_title" : "Development plan time",
+            "card_titlelink" : "/HumanResources/humanresources.html",
+            "card_navsummary" : "It's the season for the Personal Development plans, to be completed by 30th June",
+            "date" : "Mar 16",
+            "tags" : "Human Resources"
+
+        },
+          {
+            "card_colclass" : "col-md-6 col-lg-3",
+            "card_featimg" : "https://f793a340d0e7404587e0fbf6d5a318db.production.codepen.plumbing/img/laptop.png",
+            "card_title" : "Development plan time",
+            "card_titlelink" : "/HumanResources/humanresources.html",
+            "card_navsummary" : "It's the season for the Personal Development plans, to be completed by 30th June",
+            "date" : "Mar 16",
+            "tags" : "Human Resources"
+
+        },
+          {
+            "card_colclass" : "col-md-6 col-lg-3",
+            "card_featimg" : "https://f793a340d0e7404587e0fbf6d5a318db.production.codepen.plumbing/img/laptop.png",
+            "card_title" : "Development plan time",
+            "card_titlelink" : "/HumanResources/humanresources.html",
+            "card_navsummary" : "It's the season for the Personal Development plans, to be completed by 30th June",
+            "date" : "Mar 16",
+            "tags" : "Human Resources"
+
+        }
+      ]
+    %}
+           
+      {% for carditem in carditems %}
+
+      {{  
+        articleMaker.cards(
+            carditem.card_colclass,
+            carditem.card_featimg,
+            carditem.card_title, 
+            carditem.card_titlelink,
+            carditem.card_navsummary,
+            carditem.card_date,
+            carditem.card_tags
+            ) 
+      }}
+
+      {% endfor %}
+
+
+#}

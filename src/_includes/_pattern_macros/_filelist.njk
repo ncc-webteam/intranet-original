@@ -1,0 +1,20 @@
+
+{% macro filelistMakeritems(imgURL, listItem, itemURL, itemDate, itemSize) %}
+  <li class="file-item">
+    <!--<div class="feat-img">
+      <img src="{{ imgURL }}"/>
+    </div>-->
+    <div class="file-info">
+    <h4 class="h5">
+      <a class="file-item-link" href="{{ itemURL }}">
+      {{ listItem }}
+      </a>
+    </h4>
+    
+      <span class="smallDetail">{{ itemDate }}</span><br>
+      <a href="{{ itemURL }}">Download</a>
+     
+      
+    </div>
+  </li>
+{% endmacro %}

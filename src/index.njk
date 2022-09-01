@@ -1,4 +1,1253 @@
 {% extends "template.njk" %}
-{% block main %}
-  <p>Some random HTML</p>
+
+  {% import "_pattern_macros/_list.njk" as listMaker %} 
+  {% import "_pattern_macros/_cardlist.njk" as cardlooper %}
+  {% import "_pattern_macros/_radio.njk" as radioLooper %}
+  {% import "_pattern_macros/_navcardlist.njk" as navcardLooper %}
+  {% import "_pattern_macros/_simplelist.njk" as simplelistLooper %} 
+  {% import "_pattern_macros/_signpost.njk" as signPoster %}
+
+  {% block main %}
+
+    <stage style="background: url(https://storage.needpix.com/rsynced_images/beach-757556_1280.jpg); background-size: cover; background-position: center center;" class="d-flex justify-content-between py-5 flex-wrap">
+      <div class="fulltainer d-flex justify-content-start flex-wrap">
+        <div class="col-lg-3 col-md-6">
+          <div class="alert alert-danger" role="alert">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="#FFF" d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+            </svg>
+            <div class="alert-snippet">
+              <small>Server team</small>
+              <a href="#">Network disruption</a>
+            </div>
+          </div> 
+        </div> 
+        
+        <div class="col-lg-3 col-md-6">
+          <div class="alert alert-secondary" role="alert">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path fill="#FFF" d="M4,1C2.89,1 2,1.89 2,3V7C2,8.11 2.89,9 4,9H1V11H13V9H10C11.11,9 12,8.11 12,7V3C12,1.89 11.11,1 10,1H4M4,3H10V7H4V3M3,13V18L3,20H10V18H5V13H3M14,13C12.89,13 12,13.89 12,15V19C12,20.11 12.89,21 14,21H11V23H23V21H20C21.11,21 22,20.11 22,19V15C22,13.89 21.11,13 20,13H14M14,15H20V19H14V15Z" />
+            </svg>
+            <div class="alert-snippet">
+              <small>County Hall</small>
+              <p>Hot desking areas</p>
+            </div>
+          </div>
+        </div> 
+      </div>
+
+      <div class="fulltainer d-flex justify-content-between flex-wrap">
+        <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+          <div id="news-feed" class="widgetCard">
+            <div class="topbar">
+              <h2 class="h4">Council news</h2>
+            </div>
+            <ul class="news-stories d-flex justify-content-between flex-wrap list-group-flush">
+              <div class="col-md-6 col-sm-12 feat-story" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/2238168/poster-image.png); background-repeat: no-repeat; background-position: center center; background-size: cover;">
+                <div class="feat-info">
+                  <h3>Oscars at Norwich Castle <span class="badge badge-new">New</span></h3>
+                  <p class="snippet">Overall winners received their awards at a fabulous evening on Thursday 21 March. </p>
+                  <div class="meta-info">
+                    <span class="smallDetail">Mar 16 | Corporate</span><br>
+                  </div>
+                </div> 
+              </div>
+              <div class="col-md-6 col-sm-12">
+                {% set listitems = [
+                  {
+                    "img_url" : "https://s3-us-west-2.amazonaws.com/s.cdpn.io/2238168/placeholder-square.jpg",
+                    "list_item"  : "Anti-Bullying week",
+                    "list_url" : "#",
+                    "item_date" : "23 Mar",
+                    "item_dept" : "Libraries",
+                    "read_time" : "5 min"
+                  },
+                  {
+                    "img_url" : "https://s3-us-west-2.amazonaws.com/s.cdpn.io/2238168/placeholder-square.jpg",
+                    "list_item"  : "Looking to recharge?",
+                    "list_url" : "#",
+                    "item_date" : "23 Mar",
+                    "item_dept" : "Human Resources",
+                    "read_time" : "3 min"
+
+                  },
+                  {
+                    "img_url" : "https://s3-us-west-2.amazonaws.com/s.cdpn.io/2238168/placeholder-square.jpg",
+                    "list_item"  : "Adult Social Care - smart flat",
+                    "list_url" : "#",
+                    "item_date" : "23 Mar",
+                    "item_dept" : "Technology",
+                    "read_time" : "6 min"
+
+                  }
+                ] %}
+          
+                {% for listitem in listitems %}
+
+                  {{ 
+                    listMaker.listMakeritems(
+                      listitem.img_url,
+                      listitem.list_item, 
+                      listitem.list_url,
+                      listitem.item_date,
+                      listitem.item_dept,
+                      listitem.read_time
+                    ) 
+                  }}
+
+                {% endfor %}
+              </div>
+            </ul>
+            <a href="news/index.html" class="more-link" aria-label="Read more Council news">More News</a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6  mb-2">
+          <div id="news-feed" class="widgetCard">
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3 class="modal-title" id="myLargeModalLabel">Choose tags <small class="text-muted">to display in this news widget</small></h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <fieldset class="form-group"> 
+                      <div class="radiosection d-flex flex-wrap mb-4">
+                        <h3 class="mb-3 w-100">Departments</h3>
+                        {% set radioitems = [
+                          {
+                            "title" : "Adult Social Services" 
+                          },
+                          {
+                          "title" : "Childrens Services"
+                          },
+                          {
+                            "title" : "Community and Environmental Services"
+                          },
+                          {
+                            "title" : "Finance and Commercial Services"
+                          },
+                          {
+                            "title" : "Strategy and Governance"
+                          }
+                        ] %}
+          
+                        {% for radioitem in radioitems %}
+                          {{ 
+                            radioLooper.radioitems(
+                              radioitem.title
+                            ) 
+                          }}
+                        {% endfor %}
+                      </div> 
+                      <div class="radiosection d-flex flex-wrap mb-4">
+                        <h3 class="mb-3 w-100">Services</h3>
+                        <h4 class="mb-3 mt-3 w-100">Adult Social Services</h4>
+                          {% set radioitems = [
+                            {
+                              "title" : "Business Support and Development" 
+                            },
+                            {
+                            "title" : "Commissioning"
+                            },
+                            {
+                              "title" : "Community Services"
+                            },
+                            {
+                              "title" : "Community Social Work"
+                            },
+                            {
+                              "title" : "Early Help and Prevention"
+                            },
+                            {
+                              "title" : "Integrated Care"
+                            },
+                            {
+                              "title" : "Integrated Commissioning"
+                            },
+                            {
+                              "title" : "Social Work"
+                            },
+                            {
+                              "title" : "Strategy & Transformation"
+                            }
+                          ] %}
+                          
+                          {% for radioitem in radioitems %}
+                            {{ 
+                              radioLooper.radioitems(
+                                radioitem.title
+                              ) 
+                            }}
+                          {% endfor %}
+                      </div>
+                      <div class="radiosection d-flex flex-wrap mb-4">
+                        <h4 class="mb-3 mt-3 w-100">Childrens Services</h4>
+          
+          {% set radioitems = [
+        
+          {
+            "title" : "Business Design & Change" 
+          },
+        {
+           "title" : "Early Help & Prevention"
+          },
+        {
+            "title" : "Education"
+          },
+        {
+            "title" : "Performance & Challenge"
+          },
+        {
+            "title" : "RCP"
+          },
+        {
+            "title" : "Social Work"
+          },
+        {
+            "title" : "Schools"
+          }
+      ]
+    %}
+          
+      {% for radioitem in radioitems %}
+
+      {{ 
+        radioLooper.radioitems(
+            radioitem.title
+            ) 
+      }}
+
+      {% endfor %}
+         </div>
+          
+          <div class="radiosection d-flex flex-wrap mb-4">
+        
+            <h4 class="mb-3 mt-3 w-100">Community & Environmental Services</h4>
+          
+          {% set radioitems = [
+        
+          {
+            "title" : "Community Information & Learning" 
+          },
+        {
+           "title" : "Culture & Heritage"
+          },
+        {
+            "title" : "Economic Development"
+          },
+        {
+            "title" : "Fire"
+          },
+        {
+            "title" : "Highways"
+          },
+        {
+            "title" : "Planning & Economy"
+          },
+        {
+            "title" : "Public Health"
+          },
+        {
+            "title" : "Support & Development"
+          }
+      ]
+    %}
+          
+      {% for radioitem in radioitems %}
+
+      {{ 
+        radioLooper.radioitems(
+            radioitem.title
+            ) 
+      }}
+
+      {% endfor %}
+         </div>
+          
+          <div class="radiosection d-flex flex-wrap mb-4">
+        
+            <h4 class="mb-3 mt-3 w-100">Finance & Commercial Services</h4>
+          
+          {% set radioitems = [
+        
+          {
+            "title" : "Exchequer Services" 
+          },
+        {
+           "title" : "IMT"
+          },
+        {
+            "title" : "Pensions Investment & Treasury"
+          },
+        {
+            "title" : "Procurement"
+          },
+        {
+            "title" : "Property"
+          },
+        {
+            "title" : "Service Budgeting & Accounting"
+          }
+      ]
+    %}
+          
+      {% for radioitem in radioitems %}
+
+      {{ 
+        radioLooper.radioitems(
+            radioitem.title
+            ) 
+      }}
+
+      {% endfor %}
+         </div>
+          
+          <div class="radiosection d-flex flex-wrap mb-4">
+        
+            <h4 class="mb-3 mt-3 w-100">Strategy & Governance</h4>
+          
+          {% set radioitems = [
+        
+          {
+            "title" : "Business Transformation" 
+          },
+        {
+           "title" : "Communications"
+          },
+        {
+            "title" : "Democratic Services"
+          },
+        {
+            "title" : "HR"
+          },
+        {
+            "title" : "Intelligence & Analytics"
+          },
+        {
+            "title" : "Legal & Democratic"
+          },
+        {
+            "title" : "NPLAW"
+          },
+        {
+            "title" : "Strategy"
+          },
+        {
+            "title" : "Strategy and Delivery Unit"
+          }
+      ]
+    %}
+          
+      {% for radioitem in radioitems %}
+
+      {{ 
+        radioLooper.radioitems(
+            radioitem.title
+            ) 
+      }}
+
+      {% endfor %}
+         </div>
+          
+      </fieldset>
+        
+        <button type="button" class="btn-primary-std" data-dismiss="modal" aria-label="Close">Apply </button>
+          
+      </div>
+    </div>
+  </div>
+</div>
+            
+  <div class="topbar">
+     <h2 class="h4">Department updates</h2>
+<button type="button" class="btn-tertiary-btn btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">Customise</button>
+</div>
+  
+  
+<ul class="news-stories list-group-flush">
+          
+          
+          {% set listitems = [
+        {
+            "img_url" : "https://s3-us-west-2.amazonaws.com/s.cdpn.io/2238168/placeholder-square.jpg",
+          "list_item"  : "Anti-Bullying week",
+          "list_url" : "#",
+            "item_date" : "23 Mar",
+            "item_dept" : "Libraries",
+            "read_time" : "5 min"
+
+        },
+        {
+            "img_url" : "https://s3-us-west-2.amazonaws.com/s.cdpn.io/2238168/placeholder-square.jpg",
+          "list_item"  : "Looking to recharge?",
+          "list_url" : "#",
+            "item_date" : "23 Mar",
+            "item_dept" : "Human Resources",
+            "read_time" : "3 min"
+
+        },
+        {
+            "img_url" : "https://s3-us-west-2.amazonaws.com/s.cdpn.io/2238168/placeholder-square.jpg",
+          "list_item"  : "Adult Social Care - smart flat",
+          "list_url" : "#",
+            "item_date" : "23 Mar",
+            "item_dept" : "Technology",
+            "read_time" : "6 min"
+
+        }
+      ]
+    %}
+          
+      {% for listitem in listitems %}
+
+      {{ 
+        listMaker.listMakeritems(
+            listitem.img_url,
+           listitem.list_item, 
+          listitem.list_url,
+            listitem.item_date,
+            listitem.item_dept,
+            listitem.read_time
+            ) 
+      }}
+
+      {% endfor %}
+  
+  
+            </ul>
+    <a href="news/index.html" class="more-link" aria-label="Read more Department updates">More News</a>
+            </div>
+          
+          
+          
+          
+     </div>
+        
+        <div class="col-lg-3 col-md-6 col-sm-6  mb-2">
+    <div id="my-feed" class="widgetCard">
+      
+      
+      <div class="modal fade bd-example-modal-lg-locations" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h3 class="modal-title" id="myLargeModalLabel">Choose tags <small class="text-muted">to display in this news widget</small></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <fieldset class="form-group"> 
+          
+          
+          <div class="radiosection d-flex flex-wrap mb-4">
+          <h4 class="mb-3 w-100">Locations</h4>
+          
+          {% set radioitems = [
+        
+          {
+            "title" : "Attleborough" 
+          },
+        {
+           "title" : "Aylsham"
+          },
+        {
+            "title" : "Beccles"
+          },
+        {
+            "title" : "Beetley"
+          },
+        {
+            "title" : "Caister-On-Sea"
+          },
+        {
+            "title" : "Coltishall"
+          },
+        {
+            "title" : "Cromer"
+          },
+        {
+            "title" : "Dereham"
+          },
+        {
+            "title" : "Diss"
+          },
+        {
+            "title" : "Downham Market"
+          },
+        {
+            "title" : "Frettenham"
+          },
+        {
+            "title" : "Garboldisham"
+          },
+        {
+            "title" : "Gorleston"
+          },
+        {
+            "title" : "Great Yarmouth"
+          },
+        {
+            "title" : "Harleston"
+          },
+        {
+            "title" : "Hethersett"
+          },
+        {
+            "title" : "Hingham"
+          },
+        {
+            "title" : "Holt"
+          },
+        {
+            "title" : "Hunstanton"
+          },
+        {
+            "title" : "Kings Lynn"
+          },
+        {
+            "title" : "Long Stratton"
+          },
+        {
+            "title" : "Lowestoft"
+          },
+        {
+            "title" : "Lyng"
+          },
+        {
+            "title" : "Mundesley"
+          },
+        {
+            "title" : "North Walsham"
+          },
+        {
+            "title" : "Norwich"
+          },
+        {
+            "title" : "Poringland"
+          },
+        {
+            "title" : "Reepham"
+          },
+        {
+            "title" : "Sheringham"
+          },
+        {
+            "title" : "Sprowston"
+          },
+        {
+            "title" : "Stalham"
+          },
+        {
+            "title" : "Stratton Strawless"
+          },
+        {
+            "title" : "Swaffham"
+          },
+        {
+            "title" : "Thetford"
+          },
+        {
+            "title" : "Watton"
+          },
+        {
+            "title" : "Wells-next-the-sea"
+          },
+        {
+            "title" : "Wroxham"
+          },
+        {
+            "title" : "Wymondham"
+          }
+      ]
+    %}
+          
+      {% for radioitem in radioitems %}
+
+      {{ 
+        radioLooper.radioitems(
+            radioitem.title
+            ) 
+      }}
+
+      {% endfor %}
+         </div> 
+          
+     </fieldset>
+        
+        <button type="button" class="btn-primary-std" data-dismiss="modal" aria-label="Close">Apply </button>
+          
+      </div>
+    </div>
+  </div>
+</div>
+      
+  <div class="topbar">
+    <h2 class="h4">My notifications</h2>
+ <button type="button" class="btn-tertiary-btn btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg-locations">Customise</button>
+  </div>
+      <ul class="feed list-group-flush">
+          
+           {% set listitems = [
+        {
+            "img_url" : "#",
+          "list_item"  : "Personal development plan review timetable",
+          "list_url" : "#",
+            "item_date" : "Yesterday at 12:45PM",
+            "item_dept" : "",
+            "read_time" : ""
+
+        },
+        {
+            "img_url" : "#",
+          "list_item"  : "Notification 2",
+          "list_url" : "#",
+            "item_date" : "Feb 25, 2019",
+            "item_dept" : "",
+            "read_time" : ""
+
+        },
+        {
+            "img_url" : "#",
+          "list_item"  : "Budget manager P2",
+          "list_url" : "#",
+            "item_date" : "Feb 22, 2019",
+            "item_dept" : "",
+            "read_time" : ""
+
+        }
+      ]
+    %}
+          
+      {% for listitem in listitems %}
+
+      {{ 
+        listMaker.listMakeritems(
+            listitem.img_url,
+         listitem.list_item, 
+         listitem.list_url,
+            listitem.item_date,
+            listitem.item_dept,
+            listitem.read_time
+            ) 
+      }}
+
+      {% endfor %}
+          
+              </ul>
+              
+           <a href="news/index.html" class="more-link" aria-label="See all notifications">See all</a>
+      </div>         
+            
+       </div>
+ 
+      </div>
+    </stage>
+    
+  
+ <section id="content" class="">
+   
+   
+   
+   <div id="workspace-links" class="py-4 pt-5 subtleblue-background">
+    <div class="fulltainer d-flex justify-content-between flex-wrap">
+   
+  {% include "_components/_workspace-signs.njk" %}
+   
+   </div>
+     
+   </div>
+   
+   
+   <div id="recently-visited-links" class="py-4 pt-5">
+   
+    <div class="fulltainer d-flex justify-content-between flex-wrap">
+        
+        
+        <div id="recently-visited" class="col-lg-12">
+          <div class="col-lg-12 mb-2 titlebar">
+          <h2 class="h4">Frequently visited</h2>
+          <p class="text-muted">Places I frequently go</p>
+          
+        </div> 
+          
+          <div id="recently-visited-list">
+      <ul class="feed list-group-flush slick">
+          
+        
+         {% set simplelistitems = [
+        {
+            "li_subtoptitle" : "Adult Social Services",
+            "li_title" : "Adult Care leaflets",
+            "li_subtitle" : "",
+            "li_Date" : "",
+            "li_Dept" : "",
+            "li_Link" : "#"
+
+        },
+        {
+            "li_subtoptitle" : "Adult Social Services",
+            "li_title" : "Procedures list",
+            "li_subtitle" : "",
+            "li_Date" : "",
+            "li_Dept" : "",
+            "li_Link" : "#"
+
+        },
+        {
+            "li_subtoptitle" : "Customer services and communications",
+            "li_title" : "Communications toolkit",
+            "li_subtitle" : "",
+            "li_Date" : "",
+            "li_Dept" : "",
+            "li_Link" : "#"
+
+        },
+        {
+            "li_subtoptitle" : "Adult Social Services",
+            "li_title" : "Residential and nursing care",
+            "li_subtitle" : "",
+            "li_Date" : "",
+            "li_Dept" : "",
+            "li_Link" : "#"
+
+        },
+        {
+            "li_subtoptitle" : "Adult Social Services",
+            "li_title" : "Residential and nursing care",
+            "li_subtitle" : "",
+            "li_Date" : "",
+            "li_Dept" : "",
+            "li_Link" : "#"
+
+        },
+        {
+            "li_subtoptitle" : "Adult Social Services",
+            "li_title" : "Residential and nursing care",
+            "li_subtitle" : "",
+            "li_Date" : "",
+            "li_Dept" : "",
+            "li_Link" : "#"
+
+        }
+      ]
+    %}
+         
+      {% for simplelistitem in simplelistitems %}
+
+      {{ 
+        simplelistLooper.simplelistitems(
+            simplelistitem.li_subtoptitle,
+            simplelistitem.li_title,
+            simplelistitem.li_subtitle,
+            simplelistitem.li_Date,
+            simplelistitem.li_Dept,
+            simplelistitem.li_Link
+            ) 
+      }}
+
+      {% endfor %}
+        
+       </ul>
+          
+             
+          </div>
+        </div>
+        
+      
+        
+        
+        
+      </div>
+     
+     </div>
+   
+    
+   
+   <main id="content">
+   <div id="category-signs-links" class="py-4 pb-5">
+   
+   <div class="fulltainer d-flex justify-content-between flex-wrap">
+     
+        
+        <div class="col-lg-12 d-flex justify-content-between flex-wrap category-signs">
+          
+          
+          
+          <div class="col-lg-12 titlebar">
+          <h2>Tasks categories</h2>
+          <p class="text-muted">Collections of tasks to make processes easier</p>
+          
+        </div>
+          
+          {% set navcarditems = [
+        {
+            "navcard_colclass" : "col-md-6 col-lg-3",
+            "navcard_title" : "People",
+            "navcard_titlelink" : "/TaskCategories/People/index.html",
+            "navcard_navsummary" : "",
+            "navcard_link1title" : "Starters and leavers",
+            "navcard_link1link" : "#",
+            "navcard_link2title" : "Holiday guidance",
+            "navcard_link2link" : "#",
+            "navcard_link3title" : "Jobs",
+            "navcard_link3link" : "#"
+
+        },
+        {
+            "navcard_colclass" : "col-md-6 col-lg-3",
+            "navcard_title" : "Technology",
+            "navcard_titlelink" : "/TaskCategories/Technology/index.html",
+            "navcard_navsummary" : "",
+            "navcard_link1title" : "Service requests",
+            "navcard_link1link" : "#",
+            "navcard_link2title" : "Access requests",
+            "navcard_link2link" : "#",
+            "navcard_link3title" : "Asset management",
+            "navcard_link3link" : "#"
+
+        },
+        {
+            "navcard_colclass" : "col-md-6 col-lg-3",
+            "navcard_title" : "Strategy and Comms",
+            "navcard_titlelink" : "/TaskCategories/StrategyAndCommunications/index.html",
+            "navcard_navsummary" : "",
+            "navcard_link1title" : "Media",
+            "navcard_link1link" : "#",
+            "navcard_link2title" : "Marketing",
+            "navcard_link2link" : "#",
+            "navcard_link3title" : "Websites",
+            "navcard_link3link" : "#"
+
+        },
+        {
+            "navcard_colclass" : "col-md-6 col-lg-3",
+            "navcard_title" : "Working at NCC",
+            "navcard_titlelink" : "/TaskCategories/WorkingAtNCC/index.html",
+            "navcard_navsummary" : "",
+            "navcard_link1title" : "My workspace",
+            "navcard_link1link" : "#",
+            "navcard_link2title" : "Travel",
+            "navcard_link2link" : "#",
+            "navcard_link3title" : "Smarter working",
+            "navcard_link3link" : "#"
+
+        },
+        {
+            "navcard_colclass" : "col-md-6 col-lg-3",
+            "navcard_title" : "Finance and budgets",
+            "navcard_titlelink" : "/TaskCategories/FinanceAndBudgets/index.html",
+            "navcard_navsummary" : "",
+            "navcard_link1title" : "Procurement",
+            "navcard_link1link" : "#",
+            "navcard_link2title" : "Invoicing",
+            "navcard_link2link" : "#",
+            "navcard_link3title" : "Budget management",
+            "navcard_link3link" : "#"
+
+        },
+        {
+            "navcard_colclass" : "col-md-6 col-lg-3",
+            "navcard_title" : "Training and skills",
+            "navcard_titlelink" : "/TaskCategories/TrainingandSkills/index.html",
+            "navcard_navsummary" : "",
+            "navcard_link1title" : "Learning hub",
+            "navcard_link1link" : "#",
+            "navcard_link2title" : "Educator solutions",
+            "navcard_link2link" : "#",
+            "navcard_link3title" : "",
+            "navcard_link3link" : "#"
+
+        },
+        {
+            "navcard_colclass" : "col-md-6 col-lg-3",
+            "navcard_title" : "Security and business continuity",
+            "navcard_titlelink" : "#",
+            "navcard_navsummary" : "",
+            "navcard_link1title" : "Business security",
+            "navcard_link1link" : "#",
+            "navcard_link2title" : "Business continuity",
+            "navcard_link2link" : "#",
+            "navcard_link3title" : "",
+            "navcard_link3link" : "#"
+
+        },
+        {
+            "navcard_colclass" : "col-md-6 col-lg-3",
+            "navcard_title" : "Intranet",
+            "navcard_titlelink" : "/TaskCategories/IntranetGuide/index.html",
+            "navcard_navsummary" : "A handy guide to intranet functionality and design",
+            "navcard_link1title" : "",
+            "navcard_link1link" : "#",
+            "navcard_link2title" : "Business continuity",
+            "navcard_link2link" : "#",
+            "navcard_link3title" : "",
+            "navcard_link3link" : "#"
+
+        }
+      ]
+    %}
+           
+      {% for navcarditem in navcarditems %}
+
+      {{  
+        navcardLooper.navcards(
+            navcarditem.navcard_colclass,
+            navcarditem.navcard_title, 
+            navcarditem.navcard_titlelink,
+            navcarditem.navcard_navsummary,
+            navcarditem.navcard_link1title,
+            navcarditem.navcard_link1link,
+            navcarditem.navcard_link2title,
+            navcarditem.navcard_link2link,
+            navcarditem.navcard_link3title,
+            navcarditem.navcard_link3link
+            ) 
+      }}
+
+      {% endfor %} 
+          
+          
+          
+        
+          
+       </div> 
+        
+        
+        </div>
+       </div> 
+      </main>
+   
+   </section>
+    
+   
+    
+   
+    
+    
+    <section id="departments" class="py-4 pt-5">
+      
+      <div class="fulltainer d-flex justify-content-between flex-wrap">
+      
+      <div class="col-lg-12 mb-2 titlebar">
+          <h3>Departments</h3>
+          <p class="text-muted">Look at specific department records and tasks</p>
+          
+        </div>
+      
+      
+      
+      <div class="depts">
+        
+        <div class="dept-tile">
+        <div class="dept" style="background-image: url('http://inet.norfolk.gov.uk/consumption/groups/inet/@inet/documents/web_graphics/inet133740.jpg');">
+        <a href="#">Adult Education</a>
+        </div>
+          </div>
+     
+        
+         <div class="dept-tile">
+        <div class="dept" style="background-image: url('http://inet.norfolk.gov.uk/consumption/groups/inet/@inet/documents/web_graphics/inet138911.jpg');">
+        <a href="#">Adult Social Services</a>
+         </div>
+           </div>
+        
+       <div class="dept-tile">
+       <div class="dept" style="background-image: url('http://inet.norfolk.gov.uk/consumption/groups/inet/@inet/documents/web_graphics/inet138850.jpg');">
+        <a href="#">Children's Services</a>
+         </div>
+           </div> 
+     
+       <div class="dept-tile">
+        <div class="dept" style="background-image: url('http://inet.norfolk.gov.uk/consumption/groups/inet/@inet/documents/web_graphics/inet138585.jpg');">
+        <a href="#">Democratic services</a>
+        </div>
+         </div> 
+        
+     <div class="dept-tile">
+        <div class="dept" style="background-image: url('http://inet.norfolk.gov.uk/consumption/groups/inet/@inet/documents/web_graphics/inet140887.jpg');">
+        <a href="#">Fire and Rescue</a>
+        </div>
+       </div>
+      
+        
+       <div class="dept-tile">
+        <div class="dept" style="background-image: url('http://inet.norfolk.gov.uk/consumption/groups/inet/@inet/documents/web_graphics/inet140197.jpg');">
+        <a href="#">Libraries</a>
+       </div>
+         </div>
+        
+       <div class="dept-tile">
+        <div class="dept" style="background-image: url('http://inet.norfolk.gov.uk/consumption/groups/inet/@inet/documents/web_graphics/inet138586.jpg');">
+        <a href="#">Museums</a>
+        </div>
+       </div>    
+        
+      <div class="dept-tile">
+        <div class="dept" style="background-image: url('http://inet.norfolk.gov.uk/consumption/groups/inet/@inet/documents/web_graphics/inet138588.jpg');">
+        <a href="#">Procurement</a>
+        </div>
+     </div>
+        
+        
+      
+      </div>
+        
+        
+        <div class="col-lg-12 col-md-12 actionsbar mt-2">
+            <a href="/Depts/index.html" aria-label="See all departments" class="more-link link-btn">
+    See all departments <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+    <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"></path>
+</svg></a>
+          
+  
+              
+              
+            </div>
+      
+      
+      </section>
+    
+    
+     <section id="homepage-promotions" class="py-5 subtleblue-background">
+      
+     <div class="fulltainer d-flex justify-content-between flex-wrap">
+       
+       
+       <div class="col-lg-12 mb-2 titlebar">
+          <h2 class="h3">Spotlight</h2>
+          <p class="text-muted">Campaigns and promotions I may be interested in</p>
+          
+        </div>
+       
+       
+          <div class="col-md-6 col-lg-6 col-xl-6 d-flex mb-3">
+            <div class="promo-card h-100 d-flex justify-content-start" style="background: url('https://pbs.twimg.com/media/D-h74BoWsAAjDhc.jpg:large'); background-repeat: no-repeat; background-size: cover;">
+              
+              <div class="card-info left">
+                <h3>Coastal treasures</h3>
+                <p>Discover 15 heritage walking and cycling routes across north-west Norfolk</p>
+                <a href="#" class="button btn-primary-teal-std" aria-label="View the coastal treasure trails">View trails</a>
+              </div>
+            </div>
+        </div>
+
+          <div class="col-md-6 col-lg-6 col-xl-6 d-flex mb-3">
+            <div class="promo-card h-100 d-flex justify-content-end" style="background: url('https://pbs.twimg.com/media/D96kUZmWwAAasNq.jpg'); background-repeat: no-repeat; background-size: cover;">
+              
+              <div class="card-info right">
+                <h3>Bring your own device</h3>
+                <p>Access the intranet from your own device! Sign up to be one of the first!</p>
+                <a href="#" class="button btn-primary-teal-std" aria-label="Sign up for Bring your own device">Sign up</a> 
+              </div>
+            </div>
+          </div>
+        
+       </div>
+      
+      
+      </section>
+    
+    
+    
+    
+      <section id="leadership-section" class="py-5 subtleblue-background">
+        <div class="fulltainer d-flex justify-content-between flex-wrap">
+          <div class="col-lg-12 mb-2 titlebar">
+            <h3>Tagged news list</h3>
+            <p class="text-muted">New component to replace leadership blog</p>
+          </div>
+          <div id="blog-swiper" class="col-sm-12 d-flex justify-content-between flex-wrap">
+            <div class="d-flex">
+              <article class="blog-card d-flex flex-wrap flex-column">
+                <h1 class="h4">Easter Holidays and lego</h1>
+                <p>Apologies for the delay, Easter Holidays and repeated Lego building sessions have left me slightly behind schedule.</p>
+                <div class="footer-meta d-flex">
+                  <img src="https://www.norfolk.gov.uk/-/media/norfolk/images/what-we-do-and-how-we-work/chief-executive-thumbnails/simon-george-150x150.jpg?h=150&w=150&la=en&hash=B1FBA91B5EB8206A422863BDEF4C3A085E96061F"/>
+                  <div class="author">
+                    <p class="name h6">Simon George</p>
+                    <small class="text-muted">Executive Director of Finance</small>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+            
+          <div class="col-sm-12 d-flex justify-content-between flex-wrap">
+            <div class="col-lg-12 col-md-12 actionsbar mt-2">
+              <a href="/Leadership/index.html" class="more-link link-btn" aria-label="Read more Leadership blog articles">More news<svg style="width:24px;height:24px" viewBox="0 0 24 24">
+              <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+              </svg></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      
+      
+      
+          <section id="leadership-section" class="py-5 subtleblue-background">
+        <div class="fulltainer d-flex justify-content-between flex-wrap">
+          <div class="col-lg-12 mb-2 titlebar">
+            <h3>Leadership blog</h3>
+            <p class="text-muted">The latest stories from the leadership team</p>
+          </div>
+        <div id="blog-swiper" class="col-sm-12 d-flex justify-content-between flex-wrap">
+          <div class="d-flex">
+            <article class="blog-card d-flex flex-wrap flex-column">
+              <h1 class="h4">Easter Holidays and lego</h1>
+              <p>Apologies for the delay, Easter Holidays and repeated Lego building sessions have left me slightly behind schedule.</p>
+              <div class="footer-meta d-flex">
+                <img src="https://www.norfolk.gov.uk/-/media/norfolk/images/what-we-do-and-how-we-work/chief-executive-thumbnails/simon-george-150x150.jpg?h=150&w=150&la=en&hash=B1FBA91B5EB8206A422863BDEF4C3A085E96061F"/>
+                <div class="author">
+                  <p class="name h6">Simon George</p>
+                  <small class="text-muted">Executive Director of Finance</small>
+                </div>
+              </div>
+            </article>
+              
+              </div>
+            
+           <div class="d-flex">
+             
+              <article class="blog-card d-flex flex-wrap flex-column">
+                <h1 class="h4">NCC Resilience</h1>
+                
+                <p>Thank you for all your efforts keeping the County Council up and running in the face of mild disruption at County Hall</p>
+                <div class="footer-meta d-flex">
+                  <img src="https://www.norfolk.gov.uk/-/media/norfolk/images/what-we-do-and-how-we-work/chief-executive-thumbnails/fiona-mcdiarmid-150x150.jpg?la=en&hash=73F80EEA6390CC52CB51A13A30FE3CD8CA115821"/>
+                  <div class="author">
+                  <p class="name h6">Fiona McDiarmid</p>
+                  <small class="text-muted">Executive Director of Strategy and Governance</small>
+                  </div>
+                  
+                </div>
+                
+              </article>
+             
+            </div>
+            
+            <div class="d-flex">
+             
+              <article class="blog-card d-flex flex-wrap flex-column">
+                <h1 class="h4">Norwich promotion</h1>
+                
+                <p>Well done to Norwich City for achieving promotion to the Premier League! What a great moment for the city and the county.</p>
+                <div class="footer-meta d-flex">
+                  <img src="https://www.norfolk.gov.uk/-/media/norfolk/images/what-we-do-and-how-we-work/chief-executive-thumbnails/james-bullion-150-x-150.jpg?h=150&w=150&la=en&hash=73A8CE77E0C30265B9921C74EEEADBDBDB1E8FFB"/>
+                  <div class="author">
+                  <p class="name h6">James Bullion</p>
+                  <small class="text-muted">Executive Director of Adult Social Services</small>
+                  </div>
+                  
+                </div>
+                
+              </article> 
+             
+            </div>
+            
+            <div class="d-flex">
+             
+              <article class="blog-card d-flex flex-wrap flex-column">
+                <h1 class="h4">Summer rains</h1>
+                
+                <p>A welcome relief from the summer rains of the last couple of weeks – let’s hope it continues!</p>
+                <div class="footer-meta d-flex">
+                  <img src="https://www.norfolk.gov.uk/-/media/norfolk/images/what-we-do-and-how-we-work/chief-executive-thumbnails/sara-tough-150-x-150.jpg?la=en&hash=D3A66577D84BA8824F1A52E1E10DCBC00FD4C6BE"/>
+                  <div class="author">
+                  <p class="name h6">Sara Tough</p>
+                  <small class="text-muted">Executive Director of Children’s Services</small>
+                  </div>
+                  
+                </div>
+                
+              </article>
+              
+              
+             
+            </div>
+            
+        </div>
+            
+            <div class="col-sm-12 d-flex justify-content-between flex-wrap">
+            
+            
+            
+            <div class="col-lg-12 col-md-12 actionsbar mt-2">
+            <a href="/Leadership/index.html" class="more-link link-btn" aria-label="Read more Leadership blog articles">More Blog <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+    <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+</svg></a>
+              <a href="/Leadership/index.html" class="more-link link-btn ml-3" aria-label="Find out more about the leadership team">Leadership team <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+    <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+</svg></a>
+              
+              
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <section id="principles" class="">
+      
+      
+      <div id="stripes"></div>
+          
+          <div id="key-principles" class="py-5">
+            <h3 class="p-3 h2">Our key principles</h3>
+            
+            
+            <div class="fulltainer">
+            <div id="" class="full-width d-flex justify-content-between flex-wrap">
+              
+              <div class="col-md-3">
+                <div class="miniCard">
+                <h5> <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+    <path d="M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1Z" />
+</svg> Offering help early</h5>
+                <p>Offering our help early to <strong>prevent and reduce</strong> demand for specialist services</p>
+                  </div>
+               </div>
+              
+              <div class="col-md-3">
+                <div class="miniCard">
+                <h5><svg style="width:24px;height:24px" viewBox="0 0 24 24">
+    <path d="M8,12H16V14H8V12M10,20H6V4H13V9H18V12.1L20,10.1V8L14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H10V20M8,18H12.1L13,17.1V16H8V18M20.2,13C20.3,13 20.5,13.1 20.6,13.2L21.9,14.5C22.1,14.7 22.1,15.1 21.9,15.3L20.9,16.3L18.8,14.2L19.8,13.2C19.9,13.1 20,13 20.2,13M20.2,16.9L14.1,23H12V20.9L18.1,14.8L20.2,16.9Z" />
+</svg> Joining up our work</h5>
+                <p><strong>Joining up</strong> our work so that similar activities and services are easily accessible, <strong>done well and done once</strong></p>
+                  </div>
+               </div>
+              
+              <div class="col-md-3">
+                <div class="miniCard">
+                <h5><svg style="width:24px;height:24px" viewBox="0 0 24 24">
+    <path  d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z" />
+</svg> Being business-like</h5>
+                <p>Being <strong>business-like</strong> and making best use of <strong>digital technology</strong> to ensure value for money</p>
+                  </div>
+               </div>
+              
+              <div class="col-md-3">
+                <div class="miniCard">
+                <h5><svg style="width:24px;height:24px" viewBox="0 0 24 24">
+    <path d="M22,21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z" />
+</svg> Using evidence and data</h5>
+                  <p>Using evidence and data to <strong>target our work</strong> where it can make the most difference</p>
+                  </div>
+               </div>
+             
+              
+            </div>
+            </div>
+            
+            
+            
+          </div>
+
+    </section>
+
 {% endblock %}
