@@ -10,6 +10,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addWatchTarget("./src/sass/");
   eleventyConfig.addPassthroughCopy("./src/img/");
+  eleventyConfig.addPassthroughCopy("./src/scripts/");
 
   return {
     markdownTemplateEngine: 'njk',
